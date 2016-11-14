@@ -5,7 +5,7 @@ package ss.week1.lamp;
  */
 
 public class Lamp {
-
+	
 	// constants:
   
 	public static final int OUT = 0;
