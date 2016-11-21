@@ -51,4 +51,8 @@ public class Room {
     public void setGuest(Guest g) {
     	guest = g;
     }
+
+	public String toString() {
+		return "Room: " + number;
+	}
 }
