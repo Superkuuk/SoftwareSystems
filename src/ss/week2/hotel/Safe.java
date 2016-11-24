@@ -7,11 +7,6 @@ public class Safe {
 	private boolean activated;
 	private Password password;
 	
-	public static void main(String[] args) {
-		Safe safe = new Safe();
-		safe.activate("kip");
-	}
-	
 	// ========= CONSTRUCTOR =========
     /**@
       ensures this.isActive() == false;
