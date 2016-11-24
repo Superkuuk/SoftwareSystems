@@ -5,12 +5,22 @@ public class Safe {
 	// ========= VARIABLES =========
 	private boolean open;
 	private boolean activated;
+	private Password password;
+	
+	public static void main(String[] args) {
+		Safe safe = new Safe();
+		safe.activate("kip");
+	}
 	
 	// ========= CONSTRUCTOR =========
-	
+    /**@
+      ensures this.isActive() == false;
+      ensures this.isOpen() == false;
+     */	
 	public Safe() {
 		open = false;
 		activated = false;
+		password = new Password();
 	}
 	
 	// ========= COMMANDS =========
@@ -22,6 +32,10 @@ public class Safe {
       ensures this.isActive() == true;
      */
 	public void activate(String pass) {
+		assert password.acceptable(pass);
+		if (password.testWord(pass)) {
+			activated = true;
+		}
 	}
 	
     /**
@@ -30,8 +44,11 @@ public class Safe {
     /**@
       pure;
       ensures this.isActive() == false;
+      ensures this.isOpen() == false;
      */
 	public void deactivate() {
+		activated = false;
+		open = false;
 	}
 	
     /**
@@ -39,9 +56,13 @@ public class Safe {
      */
     /**@
       pure;
-      ensures Password.testWord(pass) && this.isActive() ==> this.isOpen() == true;
+      ensures password.testWord(pass) && this.isActive() ==> this.isOpen() == true;
      */
 	public void open(String pass) {
+		assert password.acceptable(pass);
+		if (password.testWord(pass) && this.isActive()) {
+			open = true;
+		}
 	}
 	
     /**
@@ -52,6 +73,7 @@ public class Safe {
       ensures this.isOpen() == false;
      */
 	public void close() {
+		open = false;
 	}
 	
 	// ========= Queries =========
@@ -62,7 +84,7 @@ public class Safe {
       pure;
      */
 	public boolean isActive() {
-		return false;
+		return activated;
 	}
 	
     /**
@@ -72,7 +94,7 @@ public class Safe {
       pure;
      */
 	public boolean isOpen() {
-		return false;
+		return open;
 	}	
 	
     /**
@@ -83,6 +105,6 @@ public class Safe {
       pure;
      */
 	public Password getPassword() {
-		return null;
+		return password;
 	}	
 }
