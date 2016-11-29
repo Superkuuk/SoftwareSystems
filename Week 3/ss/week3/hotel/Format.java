@@ -5,7 +5,7 @@ public class Format {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		printLine("vla daksd", 12.45);
-		printLine("vla asd", 122.45);
+		printLine("vla asd", -122.45);
 		printLine("vla asd", 83919.45);
 	}
 	
