@@ -18,11 +18,20 @@ public class Room {
      * Creates a <code>Room</code> with the given number, without a guest.
      * @param no number of the new <code>Room</code>
      */
+    public Room(int no, Safe safe) {
+    	number = no;
+    	this.safe = safe;
+    }
+
+    /**
+     * Creates a <code>Room</code> with the given number, without a guest.
+     * @param no number of the new <code>Room</code>
+     */
     public Room(int no) {
     	number = no;
     	safe = new Safe();
     }
-
+    
     // ------------------ Queries --------------------------
 
     /**

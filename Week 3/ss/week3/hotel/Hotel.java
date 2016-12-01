@@ -23,7 +23,6 @@ public class Hotel {
 	 * The room where the guest is checked in is returned.
 	 */
 	/**@ 
-	 pure
 	 ensures this.getRoom(name) == \result;
 	 */
 	public Room checkIn(String pass, String guestName) {	
@@ -42,7 +41,6 @@ public class Hotel {
 	 * in his room is deactivated If there is no guest with this name, nothing happens.
 	 */
 	/**@ 
-	 pure
 	 ensures this.getRoom(name) == null;
 	 */
 	public void checkOut(String guestName) {	
@@ -54,6 +52,28 @@ public class Hotel {
 	}
 	
 	// Queries:
+	
+	/**
+	 * Gets the bill with every night as an item and if needed the safe as an item.
+	 */
+	/**@ 
+	 pure
+	 */
+	public Bill getBill(String guestName, int nrNights, java.io.PrintStream printStream) {	
+		if (getRoom(guestName) != null && getRoom(guestName) instanceof PricedRoom) {
+			Bill bill = new Bill(printStream);
+			PricedRoom r = (PricedRoom) getRoom(guestName);
+			for (int i = 0; i < nrNights; i++) {
+				bill.newItem(r);
+			}
+			if (r.getSafe().isActive() && r.getSafe() instanceof PricedSafe) {
+				bill.newItem((PricedSafe) r.getSafe());
+			}
+			
+			return bill;
+		}
+		return null;
+	}
 	
 	/**
 	 * Gets a room where no guest is checked in. Or null if there is no free room available.
