@@ -15,20 +15,18 @@ public class Bill {
 		outStream = theOutStream;
 	}
 	
-	public Bill() {
-		outStream = null;
-	}
-	
 	public void newItem(Bill.Item item) {
 		sum += item.getAmount();
 		
-		assert outStream != null;
-		outStream.println(item.toString());
+		if (outStream != null) {
+			outStream.println(item.toString());
+		}
 	}
 	
 	public void close() {
-		assert outStream != null;
-		outStream.println(sum);
+		if (outStream != null) {
+			outStream.println(sum);
+		}
 	}
 	
 	/*@ pure */public double getSum() {
