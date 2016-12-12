@@ -31,4 +31,13 @@ public class LinearProductTest {
         assertTrue(linearProduct.derivative() instanceof LinearProduct);
         assertEquals(0.0, linearProduct.derivative().apply(0), DELTA);
     }
+    
+    @Test
+    public void testIntegrand() {
+        assertTrue(linearProduct.integrand() instanceof LinearProduct);
+        assertEquals(0.0, linearProduct.integrand().apply(0), DELTA);
+        LinearProduct linearProduct2 = new LinearProduct(new Constant(2), new Constant(3));
+        // answer = 2 * 3 * 4 = 24;
+        assertEquals(24, linearProduct2.integrand().apply(4), DELTA);
+    }
 }

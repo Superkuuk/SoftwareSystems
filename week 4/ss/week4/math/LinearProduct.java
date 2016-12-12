@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class LinearProduct extends Product implements Function  {
+public class LinearProduct extends Product implements Integrandable  {
 
 	private Function n;
 	private Function g;
@@ -14,5 +14,14 @@ public class LinearProduct extends Product implements Function  {
 	@Override
 	public Function derivative() {
 		return new LinearProduct(n,  g.derivative());
+	}
+
+	@Override
+	public Function integrand() {
+		if (g instanceof Integrandable) {
+			return new LinearProduct(n, ((Integrandable) g).integrand());
+		} else {
+			return null;
+		}
 	}
 }
