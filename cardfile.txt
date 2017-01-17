@@ -1,0 +1,4 @@
+Spades 8
+Clubs 2
+Hearts jack
+Diamonds queen
