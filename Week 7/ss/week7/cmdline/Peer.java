@@ -62,7 +62,6 @@ public class Peer implements Runnable {
      * On Peer.EXIT the method ends
      */
     public void handleTerminalInput() {
-		//Scanner in = new Scanner(System.in);
 		String input = "";
     	while (!input.equals("exit")) {
 			input = readString("Message: ");

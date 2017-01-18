@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestSyncConsole implements Runnable {
 	
 	Thread t;
-	public static ReentrantLock lock=  new ReentrantLock();
+	public static ReentrantLock lock = new ReentrantLock();
 	
 	
 	public TestSyncConsole(String name) {		
